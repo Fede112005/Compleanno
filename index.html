@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Festa di compleanno · Paninaro &amp; Yuppie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=VT323&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --ink:#000000; --paper:#ffffff;
+  --yellow:#ffd23f; --pink:#ff4f9a; --teal:#12b5a2; --cobalt:#2d3ec7;
+  --muted:#3a3a55; --ticker-bg:#000; --ticker-ink:#3dff7a;
+  --shadow:#000000;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#12164f; --ink:#ffffff; --paper:#1d2270; --muted:#c9cdf5;
+    --shadow:#000000; --cobalt:#7d8cff;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#12164f; --ink:#ffffff; --paper:#1d2270; --muted:#c9cdf5;
+  --shadow:#000000; --cobalt:#7d8cff;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:1.0625rem; line-height:1.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke-width='5' stroke-linecap='round'%3E%3Cpath d='M20 40 q15 -20 30 0 t30 0 t30 0' stroke='%23ff4f9a'/%3E%3Cpath d='M150 170 q12 -16 24 0 t24 0' stroke='%2312b5a2'/%3E%3C/g%3E%3Ccircle cx='190' cy='50' r='9' fill='%23ffd23f'/%3E%3Cpolygon points='40,160 62,200 18,200' fill='%232d3ec7'/%3E%3Crect x='110' y='95' width='14' height='14' fill='%23ff4f9a' transform='rotate(25 117 102)'/%3E%3Ccircle cx='85' cy='215' r='5' fill='%2312b5a2'/%3E%3C/svg%3E");
+  background-size:240px 240px;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ticker-bg)}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--pink);outline-offset:3px}
+
+/* Ticker — la Borsa di Milano versione festa */
+.ticker{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:9;
+  background:var(--ticker-bg); color:var(--ticker-ink);
+  font-family:"VT323",ui-monospace,Menlo,monospace; font-size:1.35rem;
+  overflow:hidden; white-space:nowrap; border-bottom:4px solid var(--yellow);
+}
+.ticker-track{display:inline-flex; gap:2.5rem; padding:.35rem 0; animation:scroll 38s linear infinite}
+.ticker span b{color:#fff;font-weight:400}
+.up{color:var(--ticker-ink)} .down{color:#ff6b6b}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+main{max-width:68rem;margin:0 auto;padding:clamp(1.5rem,4vw,3rem) clamp(1rem,4vw,2rem) 7rem}
+
+/* Hero */
+.hero{text-align:center;padding:clamp(2rem,6vw,4.5rem) 0 clamp(2rem,5vw,3.5rem)}
+.hero .kicker{font-family:"Bungee",Impact,sans-serif;font-size:clamp(1rem,2.4vw,1.35rem);color:var(--cobalt);margin:0 0 .75rem}
+.hero h1{
+  font-family:"Bungee Shade","Bungee",Impact,sans-serif;font-weight:400;
+  font-size:clamp(2.6rem,10vw,7.5rem);line-height:.95;margin:0;
+  color:var(--pink); letter-spacing:.01em;
+  text-shadow:6px 6px 0 var(--yellow);
+}
+.hero .tag{
+  display:inline-block;margin-top:1.75rem;padding:.6rem 1.2rem;
+  background:var(--teal);color:#000;font-family:"Bungee",Impact,sans-serif;
+  font-size:clamp(1rem,2.6vw,1.5rem);transform:rotate(-2deg);
+  border:3px solid #000;box-shadow:6px 6px 0 #000;
+}
+
+/* Blocchi */
+.grid{display:grid;gap:clamp(1.25rem,3vw,2rem);grid-template-columns:repeat(12,1fr)}
+.block{
+  background:var(--paper);border:3px solid var(--ink);
+  box-shadow:8px 8px 0 var(--shadow);padding:clamp(1.25rem,3vw,2rem);
+}
+.block h2{font-family:"Bungee",Impact,sans-serif;font-weight:400;font-size:clamp(1.4rem,3.2vw,2rem);line-height:1.1;margin:0 0 .75rem}
+.block p{margin:.5rem 0;max-width:60ch}
+.when{grid-column:span 7;background:var(--yellow);color:#000;border-color:#000;position:relative}
+.when .day{font-family:"Bungee",Impact,sans-serif;font-size:clamp(3rem,9vw,6rem);line-height:.9;margin:.25rem 0}
+.when .month{font-family:"Bungee",Impact,sans-serif;font-size:clamp(1.3rem,3vw,2rem)}
+.when .hours{display:inline-block;margin-top:1rem;background:#000;color:var(--yellow);font-family:"VT323",ui-monospace,monospace;font-size:clamp(1.6rem,4vw,2.4rem);padding:.15rem .8rem}
+.when .rings{position:absolute;left:-14px;top:18px;bottom:18px;display:flex;flex-direction:column;justify-content:space-around}
+.when .rings i{display:block;width:26px;height:12px;border-radius:6px;background:var(--bg);border:3px solid #000}
+.drinks{grid-column:span 5;background:var(--pink);color:#000;border-color:#000}
+.drinks .big{font-family:"Bungee",Impact,sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;margin:.25rem 0 .75rem}
+.dress{grid-column:span 12}
+.dress-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2rem);margin-top:1rem}
+.look{border:3px solid var(--ink);padding:1.25rem}
+.look.pan{background:var(--teal);color:#000;border-color:#000}
+.look.yup{background:var(--cobalt);color:#fff;border-color:#000}
+.look h3{font-family:"Bungee",Impact,sans-serif;font-weight:400;font-size:1.5rem;margin:0 0 .25rem}
+.look .motto{font-style:italic;margin:0 0 .75rem}
+.look ul{margin:0;padding-left:1.2rem}
+.look li{margin:.3rem 0}
+.travel{grid-column:span 12;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.travel .phone{flex:0 0 auto;width:64px;height:120px;background:#222;border:3px solid #000;border-radius:8px;position:relative;box-shadow:5px 5px 0 var(--pink)}
+.travel .phone::before{content:"";position:absolute;top:-28px;left:10px;width:10px;height:30px;background:#222;border:3px solid #000;border-radius:3px}
+.travel .phone::after{content:"";position:absolute;top:14px;left:9px;right:9px;height:22px;background:var(--ticker-ink);opacity:.8}
+.travel div{flex:1 1 18rem}
+
+footer{text-align:center;margin-top:3rem;font-family:"Bungee",Impact,sans-serif;color:var(--muted);font-size:1rem}
+
+/* Cassetta: controllo audio */
+.tape{
+  min-height:48px;
+  position:fixed;right:max(1rem,env(safe-area-inset-right,0px));bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:20;
+  display:flex;align-items:center;gap:.6rem;cursor:pointer;
+  background:#000;color:var(--yellow);border:3px solid var(--yellow);
+  font-family:"Bungee",Impact,sans-serif;font-size:.95rem;padding:.55rem .9rem .55rem .6rem;
+  box-shadow:5px 5px 0 var(--pink);
+}
+.reels{display:flex;gap:6px;background:var(--yellow);padding:5px 7px;border-radius:4px}
+.reels i{width:16px;height:16px;border-radius:50%;border:3px dashed #000;display:block}
+.tape.playing .reels i{animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Ingresso */
+.gate{
+  position:fixed;inset:0;z-index:50;display:grid;place-items:center;text-align:center;
+  background:var(--cobalt);color:#fff;padding:2rem;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.06) 0 18px,transparent 18px 36px);
+}
+.gate.hidden{display:none}
+.gate h2{font-family:"Bungee Shade","Bungee",Impact,sans-serif;font-weight:400;font-size:clamp(2.2rem,8vw,4.5rem);line-height:1;margin:0 0 1rem;color:var(--yellow)}
+.gate p{margin:0 auto 1.75rem;max-width:32ch;font-size:1.15rem}
+.gate button{
+  font-family:"Bungee",Impact,sans-serif;font-size:clamp(1.1rem,3vw,1.5rem);cursor:pointer;
+  background:var(--pink);color:#000;border:3px solid #000;padding:.9rem 1.6rem;box-shadow:7px 7px 0 #000;
+}
+.gate button:active{transform:translate(4px,4px);box-shadow:3px 3px 0 #000}
+.gate .skip{display:block;margin:1.5rem auto 0;background:none;border:none;box-shadow:none;color:#fff;font-family:"Work Sans",sans-serif;font-size:1rem;text-decoration:underline;padding:.25rem}
+
+@media (max-width:760px){
+  .when,.drinks{grid-column:span 12}
+  .dress-cols{grid-template-columns:1fr}
+}
+
+/* Avviso freddo */
+.cold{grid-column:span 12;background:#bfe9ff;color:#000;border-color:#000;display:flex;gap:1.25rem;align-items:center}
+.cold .snow{flex:0 0 auto;font-size:clamp(2.6rem,7vw,4rem);line-height:1;color:var(--cobalt);background:#fff;border:3px solid #000;width:1.6em;height:1.6em;display:grid;place-items:center;transform:rotate(-6deg);box-shadow:5px 5px 0 var(--pink)}
+.cold div{flex:1 1 auto}
+@media (max-width:760px){.cold{align-items:flex-start;gap:1rem}.cold .snow{font-size:2.2rem}}
+
+/* Figure dei look */
+.look{display:flex;flex-direction:column;gap:.75rem}
+.fig{display:block;width:100%;max-width:200px;height:auto;margin:0 auto;background:rgba(255,255,255,.35);border:3px solid #000;border-radius:50% 50% 8px 8px / 30% 30% 8px 8px;padding:.75rem .5rem 0}
+.look.yup .fig{background:rgba(255,255,255,.18)}
+
+/* Mobile */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@media (max-width:760px){
+  body{font-size:1rem}
+  main{padding:1.25rem 1rem 6.5rem}
+  .ticker{font-size:1.1rem}
+  .ticker-track{gap:1.75rem}
+  .hero{padding:1.75rem 0 1.5rem}
+  .hero h1{font-size:clamp(2.2rem,11.5vw,3.6rem);text-shadow:4px 4px 0 var(--yellow)}
+  .hero .tag{margin-top:1.25rem;box-shadow:4px 4px 0 #000}
+  .grid{gap:1.25rem}
+  .block{box-shadow:5px 5px 0 var(--shadow);padding:1.25rem 1.1rem}
+  .when{padding-left:1.6rem;text-align:left}
+  .when .rings{left:-12px}
+  .when .rings i{width:22px;height:10px}
+  .look{padding:1rem}
+  .look-row{display:grid;grid-template-columns:110px 1fr;gap:.9rem;align-items:start}
+  .fig{max-width:170px}
+  .look ul{padding-left:1.1rem}
+  .travel{flex-direction:row;gap:1.1rem;align-items:flex-start}
+  .travel .phone{width:46px;height:88px;margin-top:20px}
+  .travel .phone::before{top:-22px;left:7px;height:24px;width:8px}
+  .travel .phone::after{top:10px;left:6px;right:6px;height:16px}
+  .tape{left:1rem;right:1rem;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));justify-content:center;min-height:52px;font-size:1rem}
+  .gate{align-items:center;overflow-y:auto}
+  .gate button#enter{width:100%;max-width:22rem;min-height:56px}
+  .gate .skip{min-height:44px}
+}
+@media (min-width:761px){
+  .look{flex-direction:row;align-items:flex-start}
+  .fig{flex:0 0 170px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker-track,.tape.playing .reels i{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div>
+    <h2 id="gate-title">Lato A</h2>
+    <p>Sei stato invitato a una festa troppo giusta. Metti la cassetta e entra.</p>
+    <button id="enter" type="button">Entra con la musica</button>
+    <button class="skip" id="skip" type="button">Entra senza musica</button>
+  </div>
+</div>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><b>SPRITZ</b> <span class="up">▲ +17,00</span></span>
+    <span><b>BIRRA</b> <span class="up">▲ +22,00</span></span>
+    <span><b>MONCLER</b> <span class="up">▲ +8,5%</span></span>
+    <span><b>TIMBERLAND</b> <span class="up">▲ +12%</span></span>
+    <span><b>TAMARRI</b> <span class="down">▼ −40%</span></span>
+    <span><b>FILOFAX</b> <span class="up">▲ +3,2%</span></span>
+    <span><b>25/11</b> <span class="up">▲ FESTA</span></span>
+    <span><b>NOIA</b> <span class="down">▼ −100%</span></span>
+    <span><b>SPRITZ</b> <span class="up">▲ +17,00</span></span>
+    <span><b>BIRRA</b> <span class="up">▲ +22,00</span></span>
+    <span><b>MONCLER</b> <span class="up">▲ +8,5%</span></span>
+    <span><b>TIMBERLAND</b> <span class="up">▲ +12%</span></span>
+    <span><b>TAMARRI</b> <span class="down">▼ −40%</span></span>
+    <span><b>FILOFAX</b> <span class="up">▲ +3,2%</span></span>
+    <span><b>25/11</b> <span class="up">▲ FESTA</span></span>
+    <span><b>NOIA</b> <span class="down">▼ −100%</span></span>
+  </div>
+</div>
+
+<main>
+  <header class="hero">
+    <p class="kicker">Sei invitato al mio</p>
+    <h1>Compleanno</h1>
+    <span class="tag">Paninaro &amp; Yuppie Party</span>
+  </header>
+
+  <div class="grid">
+    <section class="block when" aria-labelledby="when-title">
+      <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <h2 id="when-title">Segnatelo sul Filofax</h2>
+      <div class="month">Mercoledì</div>
+      <div class="day">25</div>
+      <div class="month">novembre</div>
+      <div class="hours">17:00 – 22:00</div>
+    </section>
+
+    <section class="block drinks" aria-labelledby="drinks-title">
+      <h2 id="drinks-title">Da bere</h2>
+      <p class="big">Spritz e birra per tutti.</p>
+      <p>Se vuoi portare qualcos’altro da bere, scrivimi e ci organizziamo, così non arriviamo in dieci con la stessa bottiglia.</p>
+    </section>
+
+    <section class="block dress" aria-labelledby="dress-title">
+      <h2 id="dress-title">Dress code: scegli da che parte stai</h2>
+      <p>Il tema è Paninaro / Yuppie. Vale tutto, purché sia anni ’80 e un po’ esagerato.</p>
+      <div class="dress-cols">
+        <div class="look pan">
+          <svg class="fig" viewBox="0 0 200 320" role="img" aria-labelledby="pan-fig">
+<title id="pan-fig">Illustrazione di un paninaro: piumino gonfio giallo, occhiali da sole, jeans risvoltati, cintura con fibbia grande e scarponcini</title>
+<ellipse cx="100" cy="308" rx="70" ry="8" fill="#000" opacity=".18"/>
+<path d="M74 46 q-6 -34 30 -36 q34 0 26 30 q-10 -12 -26 -8 q-18 -6 -30 14z" fill="#3b2314"/>
+<circle cx="100" cy="54" r="22" fill="#f2c19a"/>
+<path d="M76 40 q2 -26 28 -26 q26 0 24 22 q-12 -10 -26 -6 q-16 -4 -26 10z" fill="#3b2314"/>
+<rect x="80" y="46" width="17" height="11" rx="3" fill="#000"/><rect x="103" y="46" width="17" height="11" rx="3" fill="#000"/><rect x="96" y="49" width="8" height="3" fill="#000"/>
+<path d="M92 68 q8 5 16 0" stroke="#7a3b2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<g stroke="#000" stroke-width="3">
+<rect x="34" y="88" width="26" height="80" rx="13" fill="#ffd23f"/>
+<rect x="140" y="88" width="26" height="80" rx="13" fill="#ffd23f"/>
+<rect x="56" y="78" width="88" height="26" rx="13" fill="#ffd23f"/>
+<rect x="54" y="100" width="92" height="26" rx="13" fill="#ffd23f"/>
+<rect x="54" y="122" width="92" height="26" rx="13" fill="#ffd23f"/>
+<rect x="56" y="144" width="88" height="26" rx="13" fill="#ffd23f"/>
+</g>
+<line x1="100" y1="80" x2="100" y2="168" stroke="#000" stroke-width="3"/>
+<circle cx="47" cy="172" r="8" fill="#f2c19a" stroke="#000" stroke-width="3"/><circle cx="153" cy="172" r="8" fill="#f2c19a" stroke="#000" stroke-width="3"/>
+<rect x="66" y="168" width="68" height="12" fill="#6b3a1e" stroke="#000" stroke-width="3"/>
+<rect x="88" y="166" width="24" height="16" rx="3" fill="#d9d9e0" stroke="#000" stroke-width="3"/>
+<g stroke="#000" stroke-width="3">
+<path d="M68 180 h30 v84 h-28z" fill="#3b5ba9"/><path d="M102 180 h30 l-2 84 h-28z" fill="#3b5ba9"/>
+<rect x="66" y="258" width="34" height="12" fill="#86a2e0"/><rect x="100" y="258" width="34" height="12" fill="#86a2e0"/>
+<path d="M66 270 h34 v20 h6 v12 h-48 v-12 q0 -8 8 -8z" fill="#c98a2e"/>
+<path d="M100 270 h34 v20 q8 0 8 8 v4 h-48 v-12 h6z" fill="#c98a2e"/>
+</g>
+<line x1="60" y1="298" x2="100" y2="298" stroke="#000" stroke-width="2"/><line x1="100" y1="298" x2="140" y2="298" stroke="#000" stroke-width="2"/>
+</svg>
+          <div class="look-text">
+            <h3>Paninaro</h3>
+            <p class="motto">“Troppo giusto, gallo!”</p>
+            <ul>
+              <li>Piumino gonfio e colorato</li>
+              <li>Scarponcini da montagna o Clarks</li>
+              <li>Jeans risvoltati e cintura con fibbia enorme</li>
+              <li>Occhiali da sole, felpa colorata, calzini a rombi</li>
+            </ul>
+          </div>
+        </div>
+        <div class="look yup">
+          <svg class="fig" viewBox="0 0 200 320" role="img" aria-labelledby="yup-fig">
+<title id="yup-fig">Illustrazione di uno yuppie: completo gessato con spalline larghe, cravatta rossa, capelli col gel, cellulare a mattone e valigetta</title>
+<defs><pattern id="pin" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#1b1f4a"/><line x1="4" y1="0" x2="4" y2="8" stroke="#8a90c9" stroke-width="1"/></pattern></defs>
+<ellipse cx="100" cy="308" rx="70" ry="8" fill="#000" opacity=".25"/>
+<circle cx="100" cy="52" r="22" fill="#f2c19a"/>
+<path d="M77 50 q-2 -30 25 -30 q24 0 22 28 q-4 -16 -24 -18 q-16 0 -23 20z" fill="#111"/>
+<path d="M90 28 q12 -4 24 4" stroke="#fff" stroke-width="2" fill="none" opacity=".6"/>
+<circle cx="92" cy="54" r="2.5" fill="#000"/><circle cx="108" cy="54" r="2.5" fill="#000"/>
+<path d="M93 64 q7 4 14 0" stroke="#7a3b2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<g stroke="#000" stroke-width="3">
+<path d="M34 84 h132 l-6 22 l-26 4 v86 h-68 v-86 l-26 -4z" fill="url(#pin)"/>
+<path d="M40 104 l-8 72 h22 l8 -66z" fill="url(#pin)"/>
+<path d="M160 104 q16 -30 2 -54 l-18 4 q10 20 -2 46z" fill="url(#pin)"/>
+<path d="M86 84 l14 40 l14 -40z" fill="#fff"/>
+</g>
+<path d="M96 88 h8 l4 44 l-8 10 l-8 -10z" fill="#e11d2e" stroke="#000" stroke-width="2.5"/>
+<circle cx="150" cy="50" r="9" fill="#f2c19a" stroke="#000" stroke-width="3"/>
+<rect x="136" y="18" width="18" height="44" rx="3" fill="#cfcabd" stroke="#000" stroke-width="3"/>
+<rect x="140" y="24" width="10" height="8" fill="#3dff7a" stroke="#000" stroke-width="1.5"/>
+<line x1="150" y1="18" x2="152" y2="2" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+<circle cx="43" cy="180" r="8" fill="#f2c19a" stroke="#000" stroke-width="3"/>
+<rect x="16" y="186" width="50" height="38" rx="4" fill="#7a4520" stroke="#000" stroke-width="3"/>
+<path d="M33 186 v-7 h16 v7" fill="none" stroke="#000" stroke-width="3"/>
+<rect x="24" y="200" width="8" height="5" fill="#ffd23f" stroke="#000" stroke-width="1.5"/><rect x="50" y="200" width="8" height="5" fill="#ffd23f" stroke="#000" stroke-width="1.5"/>
+<g stroke="#000" stroke-width="3">
+<path d="M66 196 h32 v94 h-30z" fill="url(#pin)"/><path d="M102 196 h32 l-2 94 h-30z" fill="url(#pin)"/>
+<path d="M62 290 h38 v12 h-44 q0 -12 6 -12z" fill="#000"/><path d="M100 290 h38 q6 0 6 12 h-44z" fill="#000"/>
+</g>
+</svg>
+          <div class="look-text">
+            <h3>Yuppie</h3>
+            <p class="motto">“Il pranzo è per i deboli.”</p>
+            <ul>
+              <li>Completo gessato con spalline importanti</li>
+              <li>Bretelle, cravatta larga, capelli col gel</li>
+              <li>Agenda Filofax sottobraccio</li>
+              <li>Cellulare a mattone (anche di cartone)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block cold" aria-labelledby="cold-title">
+      <span class="snow" aria-hidden="true">❄</span>
+      <div>
+        <h2 id="cold-title">Vestitevi pesantini!</h2>
+        <p>In casa non ci stiamo tutti, regaz: una parte della festa sarà sul balcone e a fine novembre fa freddo. Piumino, sciarpa e strati sotto il gessato. Tanto il piumino gonfio era già nel dress code.</p>
+      </div>
+    </section>
+
+    <section class="block travel" aria-labelledby="travel-title">
+      <span class="phone" aria-hidden="true"></span>
+      <div>
+        <h2 id="travel-title">Vieni da fuori Trento?</h2>
+        <p>Contattami in privato e ci organizziamo per arrivare, ripartire o dormire.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>Ci vediamo alle 17. Niente tamarri.</footer>
+</main>
+
+<button class="tape" id="tape" type="button" aria-pressed="false">
+  <span class="reels" aria-hidden="true"><i></i><i></i></span>
+  <span id="tape-label">Play</span>
+</button>
+
+<audio id="music" loop preload="auto" src="Elevator_Music.mp3"></audio>
+
+<script>
+(function(){
+  var audio=document.getElementById('music');
+  var gate=document.getElementById('gate');
+  var tape=document.getElementById('tape');
+  var label=document.getElementById('tape-label');
+  audio.loop=true;
+  audio.volume=0.8;
+
+  function sync(){
+    var on=!audio.paused;
+    tape.classList.toggle('playing',on);
+    tape.setAttribute('aria-pressed',on?'true':'false');
+    label.textContent=on?'Pausa':'Play';
+  }
+  function play(){ var p=audio.play(); if(p&&p.catch)p.catch(function(){}); }
+  // Rete di sicurezza: se il loop si ferma, riparte
+  audio.addEventListener('ended',function(){audio.currentTime=0;play();});
+  audio.addEventListener('play',sync);
+  audio.addEventListener('pause',sync);
+
+  function closeGate(){gate.classList.add('hidden');tape.focus({preventScroll:true});}
+  document.getElementById('enter').addEventListener('click',function(){play();closeGate();});
+  document.getElementById('skip').addEventListener('click',closeGate);
+  tape.addEventListener('click',function(){ audio.paused?play():audio.pause(); });
+
+  // Prova l’autoplay: se il browser lo permette, salta l’ingresso
+  var p=audio.play();
+  if(p&&p.then){p.then(function(){gate.classList.add('hidden');}).catch(function(){});}
+  document.getElementById('enter').focus();
+})();
+</script>
+</body>
+</html>
